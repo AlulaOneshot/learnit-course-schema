@@ -3,8 +3,8 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     elementFormDefault="qualified"
     attributeFormDefault="unqualified"
-    targetNamespace="https://example.com/schema/course"
-    xmlns="https://example.com/schema/course">
+    targetNamespace="learnit-schema"
+    xmlns="learnit-schema">
 
     <!-- Difficulty levels -->
     <xs:simpleType name="DifficultyLevel">

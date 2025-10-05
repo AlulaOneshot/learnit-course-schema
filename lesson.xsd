@@ -3,8 +3,8 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     elementFormDefault="qualified"
     attributeFormDefault="unqualified"
-    targetNamespace="https://example.com/schema/lesson"
-    xmlns="https://example.com/schema/lesson">
+    targetNamespace="learnit-schema"
+    xmlns="learnit-schema">
 
     <!-- Reuse same DifficultyLevel enumeration -->
     <xs:simpleType name="DifficultyLevel">

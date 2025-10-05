@@ -2,7 +2,7 @@
 <Course
     xmlns="https://example.com/schema/course"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="https://example.com/schema/course course.xsd"
+    xsi:schemaLocation="learnit-schema https://raw.githubusercontent.com/AlulaOneshot/learnit-course-schema/refs/heads/main/course.xsd"
     id="intro-to-computers"
     level="Beginner"
     author="liam-greenway"

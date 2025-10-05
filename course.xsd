@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified"
+    attributeFormDefault="unqualified"
+    targetNamespace="https://example.com/schema/course"
+    xmlns="https://example.com/schema/course">
+
+    <!-- Difficulty levels -->
+    <xs:simpleType name="DifficultyLevel">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Beginner"/>
+            <xs:enumeration value="Amateur"/>
+            <xs:enumeration value="Intermediate"/>
+            <xs:enumeration value="Advanced"/>
+            <xs:enumeration value="Expert"/>
+            <xs:enumeration value="Master"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Root element -->
+    <xs:element name="Course" type="CourseType"/>
+
+    <!-- Course definition -->
+    <xs:complexType name="CourseType">
+        <xs:sequence>
+            <xs:element name="Title" type="xs:string"/>
+            <xs:element name="Description" type="xs:string"/>
+            <xs:element name="Prerequisite" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="Tag" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="Lessons" type="LessonsType"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:ID" use="required"/>
+        <xs:attribute name="level" type="DifficultyLevel" use="required"/>
+        <xs:attribute name="author" type="xs:string" use="required"/>
+        <xs:attribute name="minXPGain" type="xs:positiveInteger" use="required"/>
+        <xs:attribute name="created" type="xs:date" use="required"/>
+        <xs:attribute name="updated" type="xs:date" use="required"/>
+    </xs:complexType>
+
+    <!-- Lessons -->
+    <xs:complexType name="LessonsType">
+        <xs:sequence>
+            <xs:element name="LessonReference" type="LessonReferenceType" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Lesson reference -->
+    <xs:complexType name="LessonReferenceType">
+        <xs:attribute name="url" type="xs:anyURI" use="required"/>
+    </xs:complexType>
+
+</xs:schema>

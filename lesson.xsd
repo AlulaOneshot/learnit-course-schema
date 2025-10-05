@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified"
+    attributeFormDefault="unqualified"
+    targetNamespace="https://example.com/schema/lesson"
+    xmlns="https://example.com/schema/lesson">
+
+    <!-- Reuse same DifficultyLevel enumeration -->
+    <xs:simpleType name="DifficultyLevel">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Beginner"/>
+            <xs:enumeration value="Amateur"/>
+            <xs:enumeration value="Intermediate"/>
+            <xs:enumeration value="Advanced"/>
+            <xs:enumeration value="Expert"/>
+            <xs:enumeration value="Master"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Root Lesson element -->
+    <xs:element name="Lesson" type="LessonType"/>
+
+    <!-- Lesson definition -->
+    <xs:complexType name="LessonType">
+        <xs:sequence>
+            <xs:element name="Title" type="xs:string"/>
+            <xs:element name="Description" type="xs:string"/>
+            <xs:element name="Prerequisite" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="Tag" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="Content" type="ContentType"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:ID" use="required"/>
+        <xs:attribute name="level" type="DifficultyLevel" use="required"/>
+        <xs:attribute name="author" type="xs:string" use="required"/>
+        <xs:attribute name="minXPGain" type="xs:positiveInteger" use="required"/>
+        <xs:attribute name="created" type="xs:date" use="required"/>
+        <xs:attribute name="updated" type="xs:date" use="required"/>
+    </xs:complexType>
+
+    <!-- Container for multiple page types -->
+    <xs:complexType name="ContentType">
+        <xs:choice minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="TheoryPage" type="TheoryPageType"/>
+            <xs:element name="MultipleChoiceQuestionPage" type="MultipleChoiceQuestionPageType"/>
+            <xs:element name="TrueFalseQuestionPage" type="TrueFalseQuestionPageType"/>
+            <xs:element name="FillInTheBlankQuestionPage" type="FillInTheBlankQuestionPageType"/>
+            <xs:element name="GenerativeMultipleChoiceQuestionPage" type="GenerativePageType"/>
+            <xs:element name="GenerativeTrueFalseQuestionPage" type="GenerativePageType"/>
+            <xs:element name="GenerativeFillInTheBlankQuestionPage" type="GenerativePageType"/>
+        </xs:choice>
+    </xs:complexType>
+
+    <!-- THEORY PAGE -->
+    <xs:complexType name="TheoryPageType">
+        <xs:sequence>
+            <xs:element name="Title" type="xs:string"/>
+            <xs:element name="Content" type="xs:string"/>
+            <xs:element name="Media" type="xs:anyURI" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- MULTIPLE CHOICE PAGE -->
+    <xs:complexType name="MultipleChoiceQuestionPageType">
+        <xs:sequence>
+            <xs:element name="Question" type="xs:string"/>
+            <xs:element name="MoreInfo" type="xs:string" minOccurs="0"/>
+            <xs:element name="Options" type="OptionsType"/>
+            <xs:element name="Explanation" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="OptionsType">
+        <xs:sequence>
+            <xs:element name="Option" type="OptionType" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="OptionType" mixed="true">
+        <xs:attribute name="correct" type="xs:boolean" use="optional"/>
+    </xs:complexType>
+
+    <!-- TRUE/FALSE PAGE -->
+    <xs:complexType name="TrueFalseQuestionPageType">
+        <xs:sequence>
+            <xs:element name="Question" type="xs:string"/>
+            <xs:element name="MoreInfo" type="xs:string" minOccurs="0"/>
+            <xs:element name="Answer" type="xs:boolean"/>
+            <xs:element name="Explanation" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- FILL IN THE BLANK PAGE -->
+    <xs:complexType name="FillInTheBlankQuestionPageType">
+        <xs:sequence>
+            <xs:element name="Question" type="xs:string"/>
+            <xs:element name="Answers" type="AnswersType"/>
+            <xs:element name="Explanation" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="AnswersType">
+        <xs:sequence>
+            <xs:element name="Answer" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- GENERATIVE PAGES (with embedded script) -->
+    <xs:complexType name="GenerativePageType">
+        <xs:sequence>
+            <xs:element name="Script" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

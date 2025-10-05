@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Course
+    xmlns="https://example.com/schema/course"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://example.com/schema/course course.xsd"
+    id="intro-to-computers"
+    level="Beginner"
+    author="liam-greenway"
+    minXPGain="100"
+    created="2025-10-08"
+    updated="2025-10-08">
+
+    <Title>Introduction to Computers</Title>
+    <Description>This course provides an overview of computer systems, including hardware, software, and basic troubleshooting.</Description>
+
+    <Tag>Computers</Tag>
+    <Tag>Hardware</Tag>
+    <Tag>Software</Tag>
+    <Tag>Troubleshooting</Tag>
+
+    <Lessons>
+        <LessonReference url="./lesson1.xml"/>
+    </Lessons>
+
+</Course>

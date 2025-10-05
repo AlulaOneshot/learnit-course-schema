@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Lesson
+    xmlns="https://example.com/schema/lesson"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://example.com/schema/lesson lesson.xsd"
+    id="lesson1"
+    level="Beginner"
+    author="liam-greenway"
+    minXPGain="20"
+    created="2025-10-08"
+    updated="2025-10-08">
+
+    <Title>What *Is* a Computer?</Title>
+    <Description>
+        Learn about the fundamental components of a computer system, including hardware and software, and understand how they work together to perform tasks.
+    </Description>
+
+    <Tag>Computers</Tag>
+    <Tag>Hardware</Tag>
+    <Tag>Software</Tag>
+    <Tag>Troubleshooting</Tag>
+
+    <Content>
+        <TheoryPage>
+            <Title>Understanding Computers</Title>
+            <Content>Lorem ipsum dolor sit amet...</Content>
+        </TheoryPage>
+
+        <MultipleChoiceQuestionPage>
+            <Question>What is the primary function of the CPU?</Question>
+            <Options>
+                <Option correct="true">To process instructions</Option>
+                <Option>To store data</Option>
+                <Option>To manage peripherals</Option>
+                <Option>To provide power</Option>
+            </Options>
+            <Explanation>The CPU executes instructions.</Explanation>
+        </MultipleChoiceQuestionPage>
+
+        <TrueFalseQuestionPage>
+            <Question>RAM is a type of permanent storage.</Question>
+            <Answer>false</Answer>
+            <Explanation>RAM is volatile memory.</Explanation>
+        </TrueFalseQuestionPage>
+
+        <FillInTheBlankQuestionPage>
+            <Question>The two main types of software are _______ and _______.</Question>
+            <Answers>
+                <Answer>system software, application software</Answer>
+                <Answer>application, system</Answer>
+            </Answers>
+            <Explanation>System and application software.</Explanation>
+        </FillInTheBlankQuestionPage>
+
+        <GenerativeMultipleChoiceQuestionPage>
+            <Script>
+                const question = "Which of the following components is NOT typically found in a computer system?";
+                const options = ["Motherboard", "Refrigerator", "Graphics Card", "CPU"];
+                const explanation = "A refrigerator is not a component of a computer system.";
+                return { question, options, correctOptionIndex: 1, explanation };
+            </Script>
+        </GenerativeMultipleChoiceQuestionPage>
+    </Content>
+</Lesson>
